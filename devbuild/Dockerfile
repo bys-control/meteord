@@ -1,7 +1,6 @@
-FROM byscontrol/meteord:base
-MAINTAINER ByS Control "info@bys-control.com.ar"
+FROM meteorhacks/meteord:base
+MAINTAINER MeteorHacks Pvt Ltd.
 
-RUN bash $METEORD_DIR/lib/install_meteor.sh
-ENV DEVELOPMENT=true
+ONBUILD RUN bash $METEORD_DIR/lib/install_meteor.sh
 ONBUILD COPY ./ /app
 ONBUILD RUN bash $METEORD_DIR/lib/build_app.sh
