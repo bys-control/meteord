@@ -43,9 +43,15 @@ fi
 export PORT=${PORT:-80}
 
 if [[ $DEVELOPMENT ]]; then
+  if [[ ! $METEOR_SETTINGS ]]; then
+    export METEOR_SETTINGS=$(cat /app/settings-development.json)
+  fi
   echo "=> Starting meteor app in DEVELOPMENT MODE on port:$PORT"
   meteor -p ${PORT}
 else
+  if [[ ! $METEOR_SETTINGS ]]; then
+    export METEOR_SETTINGS=$(cat /app/settings-production.json)
+  fi
   echo "=> Starting meteor app on port:$PORT"
   node main.js
 fi
