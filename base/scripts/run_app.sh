@@ -1,5 +1,8 @@
 set -e
 
+# Honour already existing PORT setup
+export PORT=${PORT:-80}
+
 if [ -d /bundle ]; then
   cd /bundle
   tar xzf *.tar.gz
@@ -17,6 +20,14 @@ elif [ -d /built_app ]; then
   cd /built_app
 elif [[ $DEVELOPMENT ]]; then
   cd /app
+  echo "=> Installing npm dependencies"
+  npm i
+  echo "=> Starting meteor app in DEVELOPMENT MODE on port:$PORT"
+  if [[ $METEOR_SETTINGS_FILE ]]; then
+    meteor -p ${PORT} --settings ${METEOR_SETTINGS_FILE}
+  else
+    meteor -p ${PORT}
+  fi
 else
   echo "=> You don't have an meteor app to run in this image."
   exit 1
@@ -39,20 +50,8 @@ if [[ $DELAY ]]; then
   sleep $DELAY
 fi
 
-# Honour already existing PORT setup
-export PORT=${PORT:-80}
-
-if [[ $DEVELOPMENT ]]; then
-  echo "=> Starting meteor app in DEVELOPMENT MODE on port:$PORT"
-  if [[ $METEOR_SETTINGS_FILE ]]; then
-    meteor -p ${PORT} --settings ${METEOR_SETTINGS_FILE}
-  else
-    meteor -p ${PORT}
-  fi
-else
-  echo "=> Starting meteor app on port:$PORT"
-  if [[ $METEOR_SETTINGS_FILE ]]; then
-    export METEOR_SETTINGS=$(cat /app/$METEOR_SETTINGS_FILE)
-  fi
-  node main.js
+echo "=> Starting meteor app on port:$PORT"
+if [[ $METEOR_SETTINGS_FILE ]]; then
+  export METEOR_SETTINGS=$(cat /app/$METEOR_SETTINGS_FILE)
 fi
+node main.js
