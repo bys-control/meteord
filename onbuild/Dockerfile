@@ -1,4 +1,4 @@
-FROM meteorhacks/meteord:base
+FROM byscontrol/meteord:base
 MAINTAINER MeteorHacks Pvt Ltd.
 
 ONBUILD COPY ./ /app
