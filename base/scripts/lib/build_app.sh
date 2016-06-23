@@ -1,6 +1,6 @@
 set -e
 
-if [[ !$DEVELOPMENT ]]; then
+if [[ ! $DEVELOPMENT ]]; then
 	COPIED_APP_PATH=/copied-app
 	BUNDLE_DIR=/tmp/bundle-dir
 	# sometimes, directly copied folder cause some wierd issues
