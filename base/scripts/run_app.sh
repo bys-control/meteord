@@ -28,6 +28,7 @@ elif [[ $DEVELOPMENT ]]; then
   else
     meteor -p ${PORT}
   fi
+  exit 1
 else
   echo "=> You don't have an meteor app to run in this image."
   exit 1
