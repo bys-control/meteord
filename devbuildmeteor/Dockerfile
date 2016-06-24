@@ -1,8 +1,7 @@
 FROM byscontrol/meteord:base
 MAINTAINER ByS Control "info@bys-control.com.ar"
 
-ONBUILD ARG DEVELOPMENT
-
 RUN METEOR_RELEASE=1.3.4 bash $METEORD_DIR/lib/install_meteor_release.sh
 ONBUILD COPY ./ /app
+ONBUILD ARG DEVELOPMENT=''
 ONBUILD RUN DEVELOPMENT=$DEVELOPMENT bash $METEORD_DIR/lib/build_app.sh
