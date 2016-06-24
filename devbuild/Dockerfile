@@ -1,6 +1,9 @@
-FROM meteorhacks/meteord:base
+FROM byscontrol/meteord:base
 MAINTAINER MeteorHacks Pvt Ltd.
 
-ONBUILD RUN bash $METEORD_DIR/lib/install_meteor.sh
+ONBUILD ARG METEOR_RELEASE
+ONBUILD ARG DEVELOPMENT
+
+ONBUILD RUN METEOR_RELEASE=$METEOR_RELEASE bash $METEORD_DIR/lib/install_meteor_release.sh
 ONBUILD COPY ./ /app
-ONBUILD RUN bash $METEORD_DIR/lib/build_app.sh
+ONBUILD RUN DEVELOPMENT=$DEVELOPMENT bash $METEORD_DIR/lib/build_app.sh
