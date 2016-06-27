@@ -1,3 +1,7 @@
 set -e
 
-cat $METEORD_DIR/lib/install_meteor_release.sh | sed s/--progress-bar/-sL/g | /bin/bash
+if [[ $METEOR_RELEASE ]]; then
+	curl -sL https://install.meteor.com | sed s/RELEASE=\"\.*\"/RELEASE=\"'$METEOR_RELEASE'\"/g | sed s/--progress-bar/-sL/g | /bin/sh
+else
+	curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
+fi
