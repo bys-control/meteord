@@ -1,5 +1,5 @@
 FROM byscontrol/meteord:base
-MAINTAINER MeteorHacks Pvt Ltd.
+MAINTAINER ByS Control "info@bys-control.com.ar"
 
 ONBUILD COPY ./ /app
 ONBUILD ARG METEOR_RELEASE
