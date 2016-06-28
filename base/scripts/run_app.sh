@@ -21,7 +21,7 @@ elif [ -d /built_app ]; then
 elif [[ $DEVELOPMENT ]]; then
   cd /app
   echo "=> Installing npm dependencies"
-  npm i
+  meteor npm i
   echo "=> Starting meteor app in DEVELOPMENT MODE on port:$PORT"
   if [[ $METEOR_SETTINGS_FILE ]]; then
     meteor -p ${PORT} --settings ${METEOR_SETTINGS_FILE}
