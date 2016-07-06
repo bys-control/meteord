@@ -1,5 +1,5 @@
 FROM debian:wheezy
-MAINTAINER MeteorHacks Pvt Ltd.
+MAINTAINER ByS Control "info@bys-control.com.ar"
 
 ENV METEORD_DIR /opt/meteord
 COPY scripts $METEORD_DIR

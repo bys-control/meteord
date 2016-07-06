@@ -1,5 +1,6 @@
-FROM meteorhacks/meteord:base
-MAINTAINER MeteorHacks Pvt Ltd.
+FROM byscontrol/meteord:base
+MAINTAINER ByS Control "info@bys-control.com.ar"
 
 ONBUILD COPY ./ /app
-ONBUILD RUN bash $METEORD_DIR/on_build.sh
+ONBUILD ARG METEOR_RELEASE
+ONBUILD RUN METEOR_RELEASE=$METEOR_RELEASE bash $METEORD_DIR/on_build.sh
