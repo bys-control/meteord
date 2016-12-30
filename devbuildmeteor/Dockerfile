@@ -2,7 +2,9 @@ FROM byscontrol/meteord:base
 MAINTAINER ByS Control "info@bys-control.com.ar"
 
 COPY scripts $METEORD_DIR
-RUN bash $METEORD_DIR/lib/install_meteor.sh
+ARG CDN_SERVER=''
+ARG METEOR_RELEASE='1.4.2.3'
+RUN CDN_SERVER=$CDN_SERVER RELEASE=$METEOR_RELEASE bash $METEORD_DIR/lib/install_meteor.sh
 ONBUILD COPY ./ /app
 ONBUILD ARG DEVELOPMENT=''
 ONBUILD RUN DEVELOPMENT=$DEVELOPMENT bash $METEORD_DIR/lib/build_app.sh
