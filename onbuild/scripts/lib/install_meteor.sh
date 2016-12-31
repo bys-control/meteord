@@ -160,7 +160,7 @@ if [ -t 1 ]; then
   VERBOSITY="--progress-bar"
 fi
 
-echo "Downloading Meteor distribution"
+echo "Downloading Meteor distribution from $TARBALL_URL"
 # keep trying to curl the file until it works (resuming where possible)
 MAX_ATTEMPTS=10
 RETRY_DELAY_SECS=5
