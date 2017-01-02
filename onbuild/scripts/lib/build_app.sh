@@ -14,7 +14,7 @@ cd $BUNDLE_DIR/bundle/programs/server/
 npm i --production
 
 mkdir -p /built_app
-rsync -rlc --delete $BUNDLE_DIR/bundle/* /built_app
+rsync -rlc --delete $BUNDLE_DIR/bundle/ /built_app
 
 # cleanup
 rm -rf $COPIED_APP_PATH
