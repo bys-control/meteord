@@ -15,6 +15,6 @@ meteor npm i --production && \
 meteor build --directory /tmp/bundle-dir --server=http://localhost:3000 && \
 cd /tmp/bundle-dir/bundle/programs/server/ && \
 meteor npm i && \
-tar --remove-files -cvzf /bundle.tgz /tmp/bundle-dir/bundle && \
+tar --remove-files -czf /bundle.tgz -C /tmp/bundle-dir/bundle/ . && \
 rm -rf /copied-app && \
 rm -rf /tmp/bundle-dir
